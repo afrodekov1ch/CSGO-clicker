@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private int hp = 10;
+    private int hp = 3;
     private int enemys;
+
 
     private void Update()
     {
         PlayerPrefs.GetInt("enemyHP");
         if(hp <= 0)
         {
-            Destroy(gameObject,1);
+            Invoke("Death", 0.5f);
         }
+    }
+    private void Death()
+    {
+        Destroy(gameObject, 0.5f);
     }
     public void Damage()
     {
